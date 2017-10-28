@@ -19,57 +19,76 @@
 
 
 	<hr />
-	
-	<br/><br/>Respostas :<br/>
+
+	<br />
+	<br />Respostas :
+	<br />
 	<div ng-view></div>
 </body>
 
 
 <script type="text/javascript">
-
-	var app = angular.module('app','["ngRoute"]');
-	app.config(function($routeProvider){
+	var app = angular.module('app', '["ngRoute"]');
+	app.config(function($routeProvider) {
 		$routeProvider
-		
+
 		.when("/", {
 			templateUrl : "main.html",
-		})
-		.when("/inclusao", {
+		}).when("/inclusao", {
 			templateUrl : "inclusao.html",
 			controller : "gravarctl"
-		})
-		.when("/listar", {
+		}).when("/listar", {
 			templateUrl : "listar.html",
 			controller : "listarctl"
 		});
 	});
-	
-	app.controller("gravarctl", function($scope, $http){
-		
-		$scope.pessoa = {codigo : '', nome : '', sexo : '',	idade : ''};
-		$scop.cadastrar = function(){
-			$http.get("http://localhost:8080/ServAngular/json/pessoa/gravar" +
-					$scope.pessoa.nome + "/" + $scope.pessoa.sexo + "/" + $scope.pessoa.idade)
-					.success(function(msg){
-						$scope.message = msg;
-					});
+
+	app.controller("gravarctl", function($scope, $http) {
+
+		$scope.pessoa = {
+			codigo : '',
+			nome : '',
+			sexo : '',
+			idade : ''
+		};
+		$scop.cadastrar = function() {
+			$http.get(
+					"http://localhost:8080/ServAngular/json/pessoa/gravar"
+							+ $scope.pessoa.nome + "/" + $scope.pessoa.sexo
+							+ "/" + $scope.pessoa.idade).success(function(msg) {
+				$scope.message = msg;
+			});
 			//limpar
-			$scope.pessoa = {codigo : '', nome : '', sexo : '',	idade : ''}; 
+			$scope.pessoa = {
+				codigo : '',
+				nome : '',
+				sexo : '',
+				idade : ''
+			};
 		}
 	});
-	
-	app.controller("listarctl", function($scope, $http){
-		
-		$scope.pessoa = {codigo : '', nome : '', sexo : '',	idade : ''};
-		$scop.cadastrar = function(){
+
+	app.controller("listarctl", function($scope, $http) {
+
+		$scope.pessoa = {
+			codigo : '',
+			nome : '',
+			sexo : '',
+			idade : ''
+		};
+		$scop.cadastrar = function() {
 			$http.get("http://localhost:8080/ServAngular/json/pessoa/listar")
-					.success(function(dados){
+					.success(function(dados) {
 						$scope.linha = dados;
 					});
 			//limpar
-			$scope.pessoa = {codigo : '', nome : '', sexo : '',	idade : ''}; 
+			$scope.pessoa = {
+				codigo : '',
+				nome : '',
+				sexo : '',
+				idade : ''
+			};
 		}
-	});	
-
+	});
 </script>
 </html>

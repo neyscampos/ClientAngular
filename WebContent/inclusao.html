@@ -3,12 +3,17 @@
 	<form ng-controller="gravarctl">
 		Nome </br>
 		<input type="text" ng-model="pessoa.nome" requerid="requerid" />
-	
-	
+		<br/>Sexo<br/>
+		<select ng-model="pessoa.sexo" required="required">
+			<option value = "m">masculino</option>
+			<option value = "f">feminino</option>
+		</select>
+		<br/>Idade<br/>
+		<input type="number" ng-model="pessoa.idade" required="required" />
 
-		<br/><br/>
+		<button type="button" ng-click="cadastrar()">Cadastrar </button>
+		
 		{{message}}
-	
 	
 	</form>
 
