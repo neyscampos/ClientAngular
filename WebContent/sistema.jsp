@@ -21,8 +21,7 @@
 	<hr />
 	
 	<br/><br/>Respostas :<br/>
-	<div ng-view>
-	</div>
+	<div ng-view></div>
 </body>
 
 
