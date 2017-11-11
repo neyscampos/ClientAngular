@@ -1,0 +1,43 @@
+<div>
+<form ng-controller="listarctl">
+{{mensagem}}<p/>
+<table ng-init="consultar()" border="1">
+ <thead>
+   <tr>
+       <td>Codigo</td>
+       <td>Nome</td>
+       <td>Sexo</td>
+       <td>Idade</td>
+       <td>Exluir</td>
+       <td>Alterar</td>
+   </tr>
+ </thead>
+<tbody>
+ <tr ng-repeat="p in listagem"> 
+    <td>{{p.codigo}}</td>
+    <td><input type="text"   id="nome" ng-model="p.nome" size="10"></td>
+    <td>
+      <select ng-model="p.sexo">
+           <option value="m">Masculino</option>
+           <option value="f">Feminino</option>
+    </select>
+    </td>
+    <td><input type="number" id="idade" ng-model="p.idade" size="5"></td>
+<td><button type="button" ng-click="excluir(p.codigo)">Excluir</button></td>
+<td><button type="button">Alterar</button></td>
+    
+    
+    
+</tr>
+</tbody>
+<tfoot>
+   <tr>
+      <td colspan="4"> Registros :{{listagem.length}} 
+   </tr>
+</tfoot>
+</table>
+
+
+</form>
+
+</div>
