@@ -90,6 +90,21 @@
           window.location.reload();
           $scope.mensagem= "Dados Excluidos ...";
    		}
+	  
+	  $scope.alterar = function(pessoa){
+		    
+		  $http.get("http://localhost:8080/ServAngular/json/pessoa/alterar/"
+		  		  +pessoa.nome + "/" +     pessoa.sexo + "/"+
+		  		  pessoa.idade + "/" +     pessoa.codigo
+		               	 )
+		          	 .then(function(dados){
+		          		  $scope.listagem= dados.data;  
+		          	 });
+		           window.location.reload();
+		           
+		           
+		  		  }
+	  
   });
    
 
